@@ -33,7 +33,7 @@ public class LogbackAutoConfigGenerator extends ConfiguratorAdapter{
 
     private static final String PROJECT_NAMESAPCE = System.getProperty("projectNameSpace","com.kuaihuoyun");
 
-    private static final String LOG_PATTERN = "%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{RequestId}] [%X{UserIdentify}] [%thread] %-5level %logger{60} - %msg%n";
+    private static final String LOG_PATTERN = "%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{RequestId}] [%thread] %-5level %logger{60} - %msg%n";
 
     private static final String LOG_CHARSET = "UTF-8";
 
@@ -41,6 +41,7 @@ public class LogbackAutoConfigGenerator extends ConfiguratorAdapter{
 
     @Override
     public void configure(LoggerContext loggerContext) {
+
 
         ConsoleAppender<ILoggingEvent> consoleAppender = createConsoleAppender("console",loggerContext);
         RollingFileAppender<ILoggingEvent> otherAppender = createRollingFileAppender("common",false,loggerContext);
@@ -54,7 +55,6 @@ public class LogbackAutoConfigGenerator extends ConfiguratorAdapter{
         initLogger(loggerContext,PROJECT_NAMESAPCE,Level.INFO, Lists.newArrayList(errorAppender,bizAppender));
         initLogger(loggerContext,"com.alibaba.dubbo",Level.INFO, Lists.newArrayList(errorAppender,dubboAppender));
         initLogger(loggerContext,"org.springframework",Level.INFO, Lists.newArrayList(errorAppender,springAppender));
-        initLogger(loggerContext,"com.juban.ground.log.AbstractLogFilter",Level.INFO, Lists.newArrayList(errorAppender,httpAppender));
 
     }
 
@@ -110,6 +110,7 @@ public class LogbackAutoConfigGenerator extends ConfiguratorAdapter{
             rfa.addFilter(filter);
         }
 
+        rfa.setEncoder(pl);
         rfa.setTriggeringPolicy(policy);
         rfa.start();
 
@@ -117,7 +118,7 @@ public class LogbackAutoConfigGenerator extends ConfiguratorAdapter{
     }
 
     public static void main(String[] args) {
-        org.slf4j.Logger logger = LoggerFactory.getLogger("test");
+        org.slf4j.Logger logger = LoggerFactory.getLogger(LogbackAutoConfigGenerator.class);
         logger.info("123");
     }
 }
