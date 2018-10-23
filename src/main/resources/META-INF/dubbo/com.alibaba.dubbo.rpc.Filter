@@ -1,0 +1,2 @@
+tracec=com.scj.dubbotrace.filter.TraceConsumerFilter
+tracep=com.scj.dubbotrace.filter.TraceProviderFilter
