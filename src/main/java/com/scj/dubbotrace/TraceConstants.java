@@ -9,6 +9,4 @@ public class TraceConstants {
 
      public static final String RequestId = "RequestId";
 
-     public static final String UserIdentify ="UserIdentify";
-
 }

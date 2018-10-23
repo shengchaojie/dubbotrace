@@ -27,10 +27,6 @@ public class TraceProviderFilter implements Filter{
         String userIdentify = null;
         if(attachments != null){
             requestId = attachments.get(TraceConstants.RequestId);
-            userIdentify = attachments.get(TraceConstants.UserIdentify);
-        }
-        if(userIdentify!=null){
-            MDC.put(TraceConstants.UserIdentify,userIdentify);
         }
         if(requestId==null){
             requestId = String.valueOf(RequestIDGenerator.getInstance().next());

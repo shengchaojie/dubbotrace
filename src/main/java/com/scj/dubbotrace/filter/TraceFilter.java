@@ -8,6 +8,7 @@ import javax.servlet.*;
 import java.io.IOException;
 
 /**
+ * 用于在web项目中，针对请求生成全局requestId
  * @author 10064749
  * @description ${DESCRIPTION}
  * @create 2018-09-29 17:28

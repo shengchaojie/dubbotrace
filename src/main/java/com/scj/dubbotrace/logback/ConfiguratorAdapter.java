@@ -6,6 +6,7 @@ import ch.qos.logback.core.Context;
 import ch.qos.logback.core.status.Status;
 
 /**
+ * Configurator的适配类
  * @author 10064749
  * @description ${DESCRIPTION}
  * @create 2018-10-10 16:27

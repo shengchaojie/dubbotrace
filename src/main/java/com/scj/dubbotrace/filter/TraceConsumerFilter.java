@@ -26,7 +26,6 @@ public class TraceConsumerFilter implements Filter{
     @Override
     public Result invoke(Invoker<?> invoker, Invocation invocation) throws RpcException {
         String requestId = MDC.get(TraceConstants.RequestId);
-        String userIdentify = MDC.get(TraceConstants.UserIdentify);
         //MDC中不存在requestId
         if(requestId==null|| Objects.equals(requestId, "")){
             requestId = String.valueOf(RequestIDGenerator.getInstance().next());
@@ -35,9 +34,6 @@ public class TraceConsumerFilter implements Filter{
         if (attachments != null) {
             attachments = new HashMap<String, String>(attachments);
             attachments.put(TraceConstants.RequestId,requestId);
-            if(userIdentify!=null&&userIdentify.length()>0){
-                attachments.put(TraceConstants.UserIdentify,userIdentify);
-            }
         }
         if (attachments != null) {
             if (RpcContext.getContext().getAttachments() != null) {

@@ -1,6 +1,7 @@
 package com.scj.dubbotrace;
 
 /**
+ * 采用 https://github.com/beyondfengyu/SnowFlake 实现的雪花算法
  * @author 10064749
  * @description ${DESCRIPTION}
  * @create 2018-09-29 15:03

@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.UUID;
 
 /**
+ * 利用logback spi特性 在classpath下没有logback.xml配置时，默认采用这个类提供的配置
  * @author 10064749
  * @description ${DESCRIPTION}
  * @create 2018-10-10 16:23
